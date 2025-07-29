@@ -140,8 +140,34 @@ select * from `example02`;
 SET SQL_SAFE_UPDATES=1; # 1: 모드 사용
 SET SQL_SAFE_UPDATES=0; # 0: 모드 해제
 
+update `example02`
+set name="김동후"
+where id=1;
 
+select * from `example02`;
 
+/*
+	3. 데이터 삭제(delete)
+    : 테이블의 데이터를 삭제하기 위한 키워드
+    
+    # 기본 형태 #
+    delete from `테이블명`
+    where 조건;
+*/
+select * from `example02`;
 
+delete from `example02`;
+# You are using safe update mode and you tried to update a table 
+# without a WHERE that uses a KEY column.  
+# To disable safe mode, toggle the option in Preferences -> SQL Editor and reconnect.
 
+set sql_safe_updates=0;
 
+delete from `example02`;
+
+select * from `example02`;
+
+set sql_safe_updates=1;
+
+delete from `example02`
+where id=1;
