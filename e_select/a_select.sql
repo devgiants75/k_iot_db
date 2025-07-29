@@ -20,3 +20,64 @@
     > WHERE(필터링) > group by(그룹화) > having(조건) > select(컬럼 추출)
     > order by(정렬) > limit(제한)   
 */
+
+USE korea_db;
+
+## 1. 기본 조회 ##
+# : select 컬럼명 from `데이터베이스명`.`테이블명`;
+select `name` from `korea_db`.`members`;
+# > 정렬하지 않고 조회 시 데이터 입력 순서대로 출력
+
+# cf) 전체 컬럼 조회 (전체 테이블 조회)
+# 컬럼명 작성에 *(전체)를 사용하여 조회
+select * from `korea_db`.`members`; -- 회원 테이블
+select * from `korea_db`.`purchases`; -- 구매 목록 테이블
+
+# cf) 두 개 이상의 컬럼 조회 시 ,(콤마)로 구분하여 나열
+select
+	`member_id`, `name`, `contact`
+from
+	`members`;
+
+# cf) alias 별칭 부여 조회 (as 키워드)
+# : 별칭 부여하지 않을 경우 테이블 생성 시 지정한 컬럼명으로 조회
+# - 컬럼명이 변경 X, 조회 당시에 사용
+# - 공백 사용 시 따옴표로 반드시 지정
+select
+	`member_id` as 고유번호, `name` as '회원 이름', `contact` as '회원 연락처'
+from
+	`members`;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
