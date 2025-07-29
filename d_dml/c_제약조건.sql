@@ -128,14 +128,4 @@ insert into `multiple`
 values 
 	(11);
 
-
-
-
-
-
-
-
-    
-    
-
-
+drop database if exists `example`;
