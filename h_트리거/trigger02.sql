@@ -99,4 +99,3 @@ where
 	mem_number >= 7;
     
 select * from `backup_singer`;
-
