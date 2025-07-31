@@ -66,3 +66,59 @@ BEGIN
 	WHERE team_id = OLD.team_id;
 END $$
 DELIMITER ;
+
+
+# ====================================================== #
+SELECT * FROM `players`;
+SELECT * FROM `teams`;
+
+# ✔문제 1 테스트: 선수 삭제 시 로그 기록 확인
+-- 테스트용 선수 추가
+INSERT INTO `players`
+VALUES
+	(201, '테스트 선수1', '타자', '1999-03-03', 2);
+
+-- 삭제 전 로그 확인
+SELECT * FROM player_delete_logs;
+
+-- 테스트용 선수 삭제
+DELETE FROM players WHERE player_id = 201;
+
+-- 삭제 후 로그 확인
+SELECT * FROM player_delete_logs;
+
+-- ✔ 문제 2 테스트: 포지션 변경 시 로그 기록 확인
+-- 테스트용 선수 추가
+INSERT INTO `players`
+VALUES
+	(201, '테스트 선수1', '타자', '1999-03-03', 2);
+    
+-- 포지션 변경 전 로그 확인
+SELECT * FROM player_position_logs;
+
+-- 포지션 변경
+UPDATE players SET position = '외야수' WHERE player_id = 201;
+
+-- 포지션 변경 후 로그 확인
+SELECT * FROM player_position_logs;
+    
+-- ✔ 문제 3 테스트: 선수 추가/삭제 시 teams.player_count 자동 업데이트 확인
+-- 테스트 전 player_count 초기 상태 확인
+SELECT team_id, player_count FROM teams;
+
+-- 선수 추가
+INSERT INTO players (player_id, name, position, birth_date, team_id)
+VALUES (303, '테스트선수3', '투수', '1994-07-07', 1);
+
+-- 추가 후 player_count 확인
+SELECT team_id, player_count FROM teams WHERE team_id = 1;
+
+-- 선수 삭제
+DELETE FROM players WHERE player_id = 303;
+
+-- 삭제 후 player_count 확인
+SELECT team_id, player_count FROM teams WHERE team_id = 1;
+
+
+
+
