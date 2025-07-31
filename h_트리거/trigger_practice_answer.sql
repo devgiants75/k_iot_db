@@ -118,7 +118,3 @@ DELETE FROM players WHERE player_id = 303;
 
 -- 삭제 후 player_count 확인
 SELECT team_id, player_count FROM teams WHERE team_id = 1;
-
-
-
-
