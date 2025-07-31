@@ -80,11 +80,18 @@ INSERT INTO Enrollments VALUES (3, 3, 3, 2023, 1);
 	3. 2023년도 1학기에 수강하는 학생들의 목록을 조회하는 SQL 명령문을 작성 (학생 ID와 이름을 포함)
 */ 
 
+SELECT 이름, 입학년도
+FROM Students
+WHERE 전공 = 'Computer Science';
 
+SELECT 강의명, 학점수
+FROM Courses
+WHERE 담당교수ID = 2;
 
-
-
-
-
-
-
+SELECT 
+	S.학생ID, S.이름
+FROM Students S
+	JOIN Enrollments E 
+    ON S.학생ID = E.학생ID
+WHERE
+	E.수강년도 = 2023 AND E.학기 = 1;
