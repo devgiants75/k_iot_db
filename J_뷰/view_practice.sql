@@ -25,7 +25,24 @@ USE `school`;
 # >> 각 컬럼은 students, courses 테이블에서 참조
 
 # cf) 각 테이블에 데이터 삽입 4개 이상 
+INSERT INTO students (student_id, first_name, last_name, age, major)
+VALUES (1, 'John', 'Doe', 20, 'Computer Science'),
+       (2, 'Jane', 'Smith', 22, 'Mathematics'),
+       (3, 'Alice', 'Johnson', 19, 'Biology'),
+       (4, 'Bob', 'Brown', 21, 'History');
 
+INSERT INTO courses (course_id, course_name, instructor, credit_hours)
+VALUES (101, 'Introduction to Programming', 'Prof. Smith', 3),
+       (102, 'Calculus I', 'Prof. Johnson', 4),
+       (103, 'Biology 101', 'Prof. Davis', 3),
+       (104, 'World History', 'Prof. Wilson', 3);
+       
+INSERT INTO student_courses (student_id, course_id)
+VALUES (1, 101),
+       (2, 102),
+       (3, 103),
+       (4, 104);
+       
 /*
 1. 뷰 이름: student_course_view
 
